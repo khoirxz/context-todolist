@@ -24,7 +24,7 @@ const ListItem = ({ id, title, description, onCreate, onOpen, onComplete }) => {
   return (
     <Box my="10">
       <Flex flexDir="row" justifyContent="space-between" cursor="pointer">
-        <Box width="full">
+        <Box width="full" opacity={onComplete ? "0.7" : "1"}>
           <Heading fontSize="20px" fontWeight="semibold" mb="1">
             {title}
           </Heading>
