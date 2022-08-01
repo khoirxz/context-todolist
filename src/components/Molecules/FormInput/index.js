@@ -34,7 +34,7 @@ const FormInput = ({ isOpen, onClose }) => {
         setTodos(newTodos);
 
         toast({
-          title: `${todo.title} dibuat`,
+          title: `${todo.title} diedit`,
           status: "warning",
           duration: 9000,
           isClosable: true,
@@ -66,18 +66,22 @@ const FormInput = ({ isOpen, onClose }) => {
           position: "top-right",
         });
 
-        setTodo({
-          title: "",
-          description: "",
-        });
+        setTodo([]);
       }
     }
   };
 
-  console.log(todo.title);
+  console.log(todo);
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal
+      isOpen={isOpen}
+      onClose={() => {
+        setTodo([]);
+        setIsEditing(false);
+        onClose();
+      }}
+    >
       <ModalOverlay />
       <ModalContent as="form" onSubmit={handSubmit}>
         <ModalHeader>Buat kegiatan ⚽</ModalHeader>

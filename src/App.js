@@ -20,33 +20,36 @@ function App() {
     <Box className="App" fontFamily="Segoe UI">
       <Navbar />
       <CustomContainer>
-        <Box>
-          <Heading fontSize="20px" fontWeight="semibold">
-            Daftar kegiatanmu 📝
-          </Heading>
-        </Box>
+        <Box mx={{ base: 3, lg: 1 }}>
+          <Box>
+            <Heading fontSize="20px" fontWeight="semibold">
+              Daftar kegiatanmu 📝
+            </Heading>
+          </Box>
 
-        <Flex justifyContent="flex-end">
-          <Button onClick={onOpen} colorScheme="whatsapp">
-            Tambah
-          </Button>
-          <FormInput isOpen={isOpen} onClose={onClose} />
-        </Flex>
+          <Flex justifyContent="flex-end">
+            <Button onClick={onOpen} colorScheme="whatsapp">
+              Tambah
+            </Button>
+            <FormInput isOpen={isOpen} onClose={onClose} />
+          </Flex>
 
-        <Box>
-          {todos.length === 0 ? (
-            <Text textAlign="center">No data</Text>
-          ) : (
-            todos.map((items) => (
-              <ListItem
-                onOpen={onOpen}
-                key={items.id}
-                id={items.id}
-                title={items.title}
-                description={items.description}
-              />
-            ))
-          )}
+          <Box>
+            {todos.length === 0 ? (
+              <Text textAlign="center">No data</Text>
+            ) : (
+              todos.map((items) => (
+                <ListItem
+                  onOpen={onOpen}
+                  key={items.id}
+                  id={items.id}
+                  title={items.title}
+                  description={items.description}
+                  onComplete={items.onComplete}
+                />
+              ))
+            )}
+          </Box>
         </Box>
       </CustomContainer>
     </Box>

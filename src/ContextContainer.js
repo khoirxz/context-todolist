@@ -6,6 +6,8 @@ export const DataListProvider = ({ children }) => {
   const [todo, setTodo] = useState({
     title: "",
     description: "",
+    onCreate: new Date().toISOString(),
+    onComplete: false,
   });
 
   const [todos, setTodos] = useState(() => {
@@ -21,6 +23,16 @@ export const DataListProvider = ({ children }) => {
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
+
+  const handleOnDone = (id) => {
+    const onDone = todos.map((items) => {
+      return items.id === id
+        ? { ...items, onComplete: items.onComplete ? false : true }
+        : items;
+    });
+
+    setTodos(onDone);
+  };
 
   const handleDelete = (id) => {
     const removeItem = todos.filter((todo) => {
@@ -39,6 +51,7 @@ export const DataListProvider = ({ children }) => {
         setTodo,
         todos,
         setTodos,
+        handleOnDone,
         handleDelete,
         isEditing,
         setIsEditing,
