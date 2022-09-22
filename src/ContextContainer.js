@@ -6,7 +6,7 @@ export const DataListProvider = ({ children }) => {
   const [todo, setTodo] = useState({
     title: "",
     description: "",
-    onCreate: new Date().toISOString(),
+    onCreate: "",
     onComplete: false,
   });
 

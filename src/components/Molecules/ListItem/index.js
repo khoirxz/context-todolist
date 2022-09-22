@@ -25,11 +25,21 @@ const ListItem = ({ id, title, description, onCreate, onOpen, onComplete }) => {
     <Box my="10">
       <Flex flexDir="row" justifyContent="space-between" cursor="pointer">
         <Box width="full" opacity={onComplete ? "0.7" : "1"}>
-          <Heading fontSize="20px" fontWeight="semibold" mb="1">
+          <Heading
+            fontSize="20px"
+            fontWeight="semibold"
+            mb="1"
+            textDecor={onComplete ? "line-through" : "none"}
+          >
             {title}
           </Heading>
 
-          <Text fontFamily="12px" fontWeight="thin" color="gray.500">
+          <Text
+            fontFamily="12px"
+            fontWeight="thin"
+            color="gray.500"
+            textDecor={onComplete ? "line-through" : "none"}
+          >
             {description}
           </Text>
           <Flex mt="2">
